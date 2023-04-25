@@ -30,6 +30,12 @@ const TodoList = () => {
     setSelectedDate(null);
   };
 
+// 할일 추가했을 때 추가했다는 alert
+function handleButtonClick() {
+  // Trigger the "done" event here
+  alert("Done");
+}
+
   // toggleTodo 함수는 체크박스를 눌러 할 일의 완료 상태를 변경하는 함수입니다.
   const toggleTodo = (id) => {
     // 할 일 목록에서 해당 id를 가진 할 일의 완료 상태를 반전시킵니다.
@@ -105,7 +111,7 @@ const TodoList = () => {
           //   color: #0070f3;
           // }
           className="w-40 justify-self-end p-1 mb-4 bg-pink-500 text-white border border-pink-500 rounded hover:bg-white hover:text-pink-500"
-          onClick={addTodo}
+          onClick={handleButtonClick}
         >
           Add Todo
         </button>
