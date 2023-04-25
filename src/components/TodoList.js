@@ -111,7 +111,11 @@ function handleButtonClick() {
           //   color: #0070f3;
           // }
           className="w-40 justify-self-end p-1 mb-4 bg-pink-500 text-white border border-pink-500 rounded hover:bg-white hover:text-pink-500"
-          onClick={handleButtonClick}
+          onClick={() => {
+            addTodo();
+            handleButtonClick();
+          }}
+         
         >
           Add Todo
         </button>
