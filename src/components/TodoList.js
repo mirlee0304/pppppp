@@ -39,7 +39,7 @@ const TodoList = () => {
     // const q = query(todoCollection, orderBy("datetime", "desc"));
 
     //firestore에서 할일 목록 조회
-    const results =await getDocs(q);
+    const results = await getDocs(q);
     const newTodos = [];
 
     //가져온 할일 목록 newTodos 에 넣기
