@@ -53,7 +53,7 @@ const TodoList = () => {
     setTodos(newTodos);
   }
 
-  useEffect(() ==> {
+  useEffect(() => {
     getTodos();
   }, []);
 
@@ -79,7 +79,7 @@ const TodoList = () => {
   */
 
   //++++++++
-  const addTodo = () => {
+  const addTodo = async () => {
     // 입력값이 비어있는 경우 함수를 종료합니다.
     if (input.trim() === "") return;
     // 기존 할 일 목록에 새로운 할 일을 추가하고, 입력값을 초기화합니다.
@@ -97,7 +97,7 @@ const TodoList = () => {
     });
 
     //id 값을 firestore 에 저장한 값으로 지정
-    setTodos([...todos, [ id: docRef.id, text: input, completed: false ]]);
+    setTodos([...todos, { id: docRef.id, text: input, completed: false }]);
     setInput("");
   };
 
