@@ -170,10 +170,9 @@ function handleButtonClick() {
   // 컴포넌트를 렌더링합니다.
   return (
     <div className={styles.container}>
-      <h1 className="text-xl mb-4 font-bold underline underline-offset-4 decoration-wavy text-blue-500">
+      <h1 className="text-xl mb-4 font-bold underline underline-offset-4 decoration-wavy">
         Todo List
       </h1>
-      <div className={styles.inputContainer}></div>
       {/* 할 일을 입력받는 텍스트 필드입니다. */}
       <input
         type="text"
@@ -184,18 +183,12 @@ function handleButtonClick() {
         //   padding: 5px;
         //   margin-bottom: 10px;
         // }
-        className="shadow-lg w-full p-1 mb-4 border border-gray-300 rounded"
+        className="w-full p-1 mb-4 border border-gray-300 rounded"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <input
-        type="date"
-        className={styles.itemInput}
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)} 
-        />
       {/* 할 일을 추가하는 버튼입니다. */}
-      <div class="grid">
+      <div className="grid">
         <button
           // className={styles.addButton}
           // -- addButton CSS code --
@@ -212,46 +205,29 @@ function handleButtonClick() {
           //   background-color: #fff;
           //   color: #0070f3;
           // }
-          className="w-40 justify-self-end p-1 mb-4 bg-pink-500 text-white border border-pink-500 rounded hover:bg-white hover:text-pink-500"
-          onClick={() => {
-            addTodo();
-            handleButtonClick();
-          }}
-         
+          className={`w-40
+                      justify-self-end
+                      p-1 mb-4
+                    bg-blue-500 text-white
+                      border border-blue-500 rounded
+                    hover:bg-white hover:text-blue-500`}
+          onClick={addTodo}
         >
           Add Todo
         </button>
-
-      <div className="w-1/2 pr-4">
-        <h2 className="text-lg font-medium mb-2">Todo List</h2>
-        <ul>
-          {sortTodos(todos)
-            .filter((todo) => !todo.completed)
-            .map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onToggle={() => toggleTodo(todo.id)}
-              />
-            ))}
-        </ul>
       </div>
-      <div className="w-1/2 pl-4">
-        <h2 className="text-lg font-medium mb-2">Completed Todo</h2>
-        <ul>
-          {sortTodos(todos)
-            .filter((todo) => todo.completed)
-            .map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onDelete={() => deleteTodo(todo.id)}
-              />
-            ))}
-        </ul>
-      </div>
+      {/* 할 일 목록을 렌더링합니다. */}
+      <ul>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={() => toggleTodo(todo.id)}
+            onDelete={() => deleteTodo(todo.id)}
+          />
+        ))}
+      </ul>
     </div>
-  </div>
   );
 };
 
